@@ -1,19 +1,173 @@
 ---
 titulo: "Título do seu Trabalho Acadêmico"
-autor: "Seu Nome"
-genero: "F" # / M
-orientador: "Nome do Orientador"
-genero_orientador: "F" # / "M"
-coorientador: "Nome do Coorientador"
-genero_coorientador: "F" # "M"
 curso: "Estatística" # / "Matemática" / "Matemática Aplicada"
-nível: "M" # / "D" - Mestrado ou Doutorado
-ano: "2020"
-output: tese_imecc_pt
+nível_doutorado: False # False para Mestrado, True para Doutorado
+autor: 
+  nome: "Nome do Aluno"
+  feminino: True
+orientador:
+  nome: "Nome do Orientador"
+  feminino: True
+#coorientador: 
+#  nome: "Nome do Coorientador"
+#  feminino: True
+ano: "2021"
+indice: True
+glossario: True
+lista_ilustracoes: true
+output: 
+  pdf_document:
+    template: template.tex
+#folha_de_rosto: "folha_de_rosto.pdf" # Arquivo com folha de rosto assinada e escaneada para versão final
+#ficha_catalografica: "ficha_catalografica.pdf" # Arquivo pdf fornecido pela biblioteca
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
 ```
 
+<!-- Folha de Aprovação (Obrigatório) -->
+<!--
+A folha de aprovação será fornecida pela secretaria de pós-graduação. Após recebê-la, escaneie a folha
+salvando em PDF no diretório do seu projeto com o nome 'folhadeaprovacao.pdf' e deixe apenas o comando
+'\includepdf{folhadeaprovacao.pdf}' dentro do ambiente abaixo
+-->
+\begin{folhadeaprovacao}
+    \centering{\ABNTEXchapterfont\large A folha de aprovação será fornecida pela Secretaria de Pós-Graduação}
+%\includepdf{folhadeaprovacao.pdf}
+\end{folhadeaprovacao}
 
+<!-- Dedicatória (Opcional) -->
+\begin{dedicatoria}
+   \vspace*{\fill}
+   \centering
+   \noindent
+   \textit{
+      Este trabalho é dedicado às crianças adultas que,\\
+      quando pequenas, sonharam em se tornar cientistas.
+   }
+   \vspace*{\fill}
+\end{dedicatoria}
+
+<!-- Agradecimentos (Opcional) -->
+\begin{agradecimentos}
+Inserir os agradecimentos, sem esquecer dos órgãos de fomento!
+\end{agradecimentos}
+
+<!-- Epígrafe (Opcional) -->
+\begin{epigrafe}
+    \vspace*{\fill}
+    \begin{flushright}
+	\textit{``Não vos amoldeis às estruturas deste mundo, \\
+	    mas transformai-vos pela renovação da mente, \\
+	    a fim de distinguir qual é a vontade de Deus: \\
+	    o que é bom, o que Lhe é agradável, o que é perfeito.\\
+	    (Bíblia Sagrada, Romanos 12, 2)
+	}
+    \end{flushright}
+\end{epigrafe}
+
+<!-- Resumos (Obrigatório) -->
+\include{resumos}
+
+<!-- Lista de Ilustrações (Opcional) -->
+\pdfbookmark[0]{\listfigurename}{lof}
+\listoffigures*
+\cleardoublepage
+
+<!-- Lista de Tabelas (Opcional) -->
+\pdfbookmark[0]{\listtablename}{lot}
+\listoftables*
+\cleardoublepage
+
+<!-- Lista de Abreviaturas e Siglas (Opcional) -->
+\begin{siglas}
+  \item[UNICAMP] Universidade Estadual de Campinas
+  \item[IMECC] Instituto de Matemática, Estatística e Computação Científica
+  \item[LabCSD] Laboratório de Controle e Sistemas Dinâmicos
+  \item[EPIFISMA] Laboratório de Epidemiologia e Fisiologia Matemática
+  \item[LCP] Laboratório de Computação Paralela
+  \item[LGC] Laboratório de Geofísica Computacional
+  \item[LMDC] Laboratório de Matemática Discreta e Códigos
+  \item[MiLAB] Laboratório de Tratamento Matemático de Imagens e Inteligência Computacional
+  \item[LPOO] Laboratório de Pesquisa Operacional e Otimização
+  \item[LEM] Laboratório de Ensino de Matemática
+  \item[PAPMEM] Programa de Aperfeiçoamento para Professores de Matemática do Ensino Médio
+  \item[OMU] Olimpíada de Matemática da Unicamp
+  \item[CCPG] Comissão Central de Pós-Graduação
+  \item[ABNT] Associação Brasileira de Normas Técnicas
+  \item[abnTeX] ABsurdas Normas para TeX
+\end{siglas}
+
+<!-- Lista de Símbolos (Opcional) -->
+\begin{simbolos}
+  \item[$ \mathds{M}_{m\times n}(\mathds{R}) $] Conjunto das matrizes de ordem $m\times n$ com entradas reais
+  \item[$ \mathds{R}^n_+ $] Conjunto dos vetores $x$ pertencentes a $\mathds{R}^n$ que satisfazem $x\geq0$
+  \item[$ \mathds{R}^n_{++} $] Conjunto dos vetores $x$ pertencentes a $\mathds{R}^n$ que satisfazem $x>0$
+  \item[$\|\cdot\|$] Norma-p vetorial
+  \item[$\vvvert\cdot\vvvert_p$] Norma-p matricial
+  \item[$\mathbf{I}_n$] Matriz identidade de ordem $n \times n$
+  \item[$\nabla f$] Gradiente da função $f$
+  \item[$\infty$] Infinito
+\end{simbolos}
+
+<!-- Lista de Algoritmos (Opcional) -->
+\pdfbookmark[0]{\listalgorithmcfname}{loa}
+\listofalgorithms
+\cleardoublepage
+
+<!-- Lista de Códigos (Opcional) -->
+\pdfbookmark[0]{\lstlistlistingname}{lol}
+\begin{KeepFromToc}
+\lstlistoflistings
+\end{KeepFromToc}
+\cleardoublepage
+
+<!-- Sumário (Obrigatório) -->
+\pdfbookmark[0]{\contentsname}{toc}
+\tableofcontents*
+\cleardoublepage
+
+\textual
+
+<!-- Introdução -->
+
+<!-- Desenvolvimento -->
+# Capitulo 1
+
+```{r}
+plot(iris)
+```
+
+<!-- Considerações Finais -->
+\phantompart
+\include{considfinais}
+
+\postextual
+
+<!-- Referências -->
+\bibliography{abntex2-modelo-references}
+
+<!-- Glossário -->
+\phantompart
+\cleardoublepage
+\phantomsection
+\addcontentsline{toc}{chapter}{\glossaryname}
+\printglossaries
+
+
+<!-- Apêndices -->
+\begin{apendicesenv}
+\partapendices
+\include{apendices}
+\end{apendicesenv}
+
+<!-- Anexos -->
+\begin{anexosenv}
+% Imprime uma página indicando o início dos anexos
+\partanexos
+\include{anexos}
+\end{anexosenv}
+
+\phantompart
+\printindex

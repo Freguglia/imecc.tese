@@ -1,0 +1,221 @@
+\documentclass[
+	oldfontcommands,
+	sumario=abnt-6027-2012,
+	12pt,
+	openright,
+	oneside,
+	a4paper,
+	english,		% idioma adicional para hifenização
+	brazil			% o último idioma é o principal do documento
+	]{imecc-unicamp}
+% ----------------------------------------------------------
+% PACOTES ESSENCIAIS
+\input{pacotes}
+
+\titulo{$titulo$}
+\curso{$curso$}
+
+$if(autor.feminino)$
+  \autor[autora]{$autor.nome$}
+  $if(nivel_doutorado)$
+    \titulacao{Doutora}
+    \tipotrabalho{Tese}
+  $else$
+    \titulacao{Mestra}
+    \tipotrabalho{Dissertação}
+  $endif$
+
+$else$
+  \autor{$autor.nome$}
+  $if(nivel_doutorado)$
+    \titulacao{Doutor}
+    \tipotrabalho{Tese}
+  $else$
+    \titulacao{Mestre}
+    \tipotrabalho{Dissertação}
+  $endif$
+$endif$
+
+$if(orientador.feminino)$
+  \orientador[Orientadora]{$orientador.nome$}
+$else$
+  \orientador{$orientador.nome$}
+$endif$
+
+$if(coorientador)$
+  $if(orientador.feminino)$
+    \coorientador[Coorientadora]{$coorientador.nome$}
+  $else$
+    \coorientador{$coorientador.nome$}
+  $endif$
+$endif$
+
+\data{$ano$}
+
+% \theoremstyle{plain}
+\newtheorem{theorem}{Teorema}%[chapter]
+\newtheorem{lemma}{Lema}%[chapter]
+\providecommand*{\lemmaautorefname}{Lema}
+\newtheorem{proposition}{Proposição}%[chapter]
+\providecommand*{\propositionautorefname}{Proposição}
+\newtheorem{corollary}{Corolário}%[chapter]
+\providecommand*{\corollaryautorefname}{Corolário}
+\newtheorem{conjecture}{Conjectura}%[chapter]
+\providecommand*{\conjectureautorefname}{Conjectura}
+\newtheorem{definition}{Definição}%[chapter]
+\providecommand*{\definitionautorefname}{Definição}
+\newtheorem{notation}{Notação}%[chapter]
+\providecommand*{\notationautorefname}{Notação}
+\newtheorem{remark}{Observação}%[chapter]
+\providecommand*{\remarkautorefname}{Observação}
+\newtheorem{example}{Exemplo}%[chapter]
+\providecommand*{\exampleautorefname}{Exemplo}
+\newtheorem{note}{Nota}%[chapter]
+\providecommand*{\noteautorefname}{Nota}
+
+\lstset{
+  language=C++,
+  basicstyle=\ttfamily,
+  keywordstyle=\color{blue},
+  stringstyle=\color{verde},
+  commentstyle=\color{red},
+  extendedchars=true,
+  showspaces=false,
+  showstringspaces=false,
+  numbers=left,
+  numberstyle=\tiny,
+  breaklines=true,
+  backgroundcolor=\color{green!10},
+  breakautoindent=true,
+  fontadjust=false
+}
+
+\definecolor{blue}{RGB}{41,5,195}
+\definecolor{verde}{rgb}{0,0.5,0}
+
+\makeatletter
+\hypersetup{
+  pdftitle={\@title},
+  pdfauthor={\@author},
+  pdfsubject={%
+    \imprimirtipotrabalho\ apresentada ao Instituto de Matemática, Estatística %
+    e Computação Científica da Universidade Estadual de Campinas como parte dos %
+    requisitos exigidos para a obtenção do título de \imprimirtitulacao\ em %
+    \imprimircurso.
+  },
+  pdfcreator={LaTeX with unicamp-abnTeX2},
+  pdfkeywords={abnt}{latex}{abntex}{abntex2}{trabalho acadêmico},
+  colorlinks=true,
+  linkcolor=blue,
+  citecolor=blue,
+  filecolor=magenta,
+  urlcolor=blue,
+  bookmarksdepth=4
+}
+\makeatother
+
+\everymath{\displaystyle}
+
+\renewcommand{\sin}{\mathrm{sen}}
+\renewcommand{\tan}{\mathrm{tg}}
+\renewcommand{\csc}{\mathrm{cossec}}
+\renewcommand{\cot}{\mathrm{cotg}}
+
+\DeclareMathOperator{\posto}{\mathrm{posto}}
+\DeclareMathOperator{\conv}{\mathrm{conv}}
+\DeclareMathOperator{\diag}{\mathrm{diag}}
+\DeclareMathOperator{\argmin}{\mathrm{arg}\min}
+\DeclareMathOperator{\argmax}{\mathrm{arg}\max}
+
+\setlength{\parindent}{2.0cm}
+\setlength{\parskip}{0.2cm}
+\newsubfloat{figure}
+\providecommand*{\subfigureautorefname}{Subfigura}
+
+$if(indice)$
+  \makeindex
+$endif$
+
+$if(glossario)$
+  \makeglossaries
+  \newglossaryentry{pai}{
+      name={pai},
+      plural={pai},
+      description={este é uma entrada pai, que possui outras
+      subentradas.}
+  }
+  \newglossaryentry{componente}{
+      name={componente},
+      plural={componentes},
+      parent=pai,
+      description={descriação da entrada componente.}
+  }
+  \newglossaryentry{filho}{
+      name={filho},
+      plural={filhos},
+      parent=pai,
+      description={isto é uma entrada filha da entrada de nome
+  	\gls{pai}. Trata-se de uma entrada irmã da entrada
+  	\gls{componente}.
+      }
+  }
+  \newglossaryentry{equilibrio}{
+      name={equilíbrio da configuração},
+      see=[veja também]{componente},
+      description={consistência entre os \glspl{componente}}
+  }
+  \newglossaryentry{latex}{
+      name={LaTeX},
+      description={ferramenta de computador para autoria de
+      documentos criada por D. E. Knuth}
+  }
+  \newglossaryentry{abntex2}{
+      name={abnTeX2},
+      see=latex,
+      description={suíte para LaTeX que atende os requisitos das
+      normas da ABNT para elaboração de documentos técnicos e
+      científicos brasileiros}
+  }
+  \renewcommand*{\glsseeformat}[3][\seename]{\textit{#1}
+   \glsseelist{#2}}
+  \renewcommand{\glossaryname}{Glossário}
+  \providetranslation{Glossary}{Glossário}
+  \providetranslation{Acronyms}{Siglas}
+  \providetranslation{Notation (glossaries)}{Notação}
+  \providetranslation{Description (glossaries)}{Descrição}
+  \providetranslation{Symbol (glossaries)}{Símbolo}
+  \providetranslation{Page List (glossaries)}{Lista de Páginas}
+  \providetranslation{Symbols (glossaries)}{Símbolos}
+  \providetranslation{Numbers (glossaries)}{Números}
+  \setglossarystyle{index}
+$endif$
+
+\begin{document}
+
+\selectlanguage{brazil}
+\frenchspacing
+
+\pretextual
+\imprimirprimeirafolha
+
+$if(folha_de_rosto)$
+  \begin{folhaderosto}
+  \includepdf{$folha-de-rosto$}
+  \end{folhaderosto}
+$else$
+  \imprimirfolhaderosto
+$endif$
+
+\begin{fichacatalografica}
+  $if(ficha_catalografica)$
+    \includepdf{ficha-catalografica.pdf}
+  $else$
+    \begin{center}
+  {\ABNTEXchapterfont\large A ficha catalográfica será fornecida pela biblioteca}
+    \end{center}
+  $endif$
+\end{fichacatalografica}
+
+$body$
+
+\end{document}
