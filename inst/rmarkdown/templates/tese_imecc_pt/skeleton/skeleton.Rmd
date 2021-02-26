@@ -1,0 +1,19 @@
+---
+titulo: "Título do seu Trabalho Acadêmico"
+autor: "Seu Nome"
+genero: "F" # / M
+orientador: "Nome do Orientador"
+genero_orientador: "F" # / "M"
+coorientador: "Nome do Coorientador"
+genero_coorientador: "F" # "M"
+curso: "Estatística" # / "Matemática" / "Matemática Aplicada"
+nível: "M" # / "D" - Mestrado ou Doutorado
+ano: "2020"
+output: tese_imecc_pt
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+
