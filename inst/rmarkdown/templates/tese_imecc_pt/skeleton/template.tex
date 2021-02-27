@@ -5,11 +5,10 @@
 	openright,
 	oneside,
 	a4paper,
-	english,		% idioma adicional para hifenização
-	brazil			% o último idioma é o principal do documento
+	english,
+	brazil
 	]{imecc-unicamp}
-% ----------------------------------------------------------
-% PACOTES ESSENCIAIS
+
 \input{pacotes}
 
 \titulo{$titulo$}
@@ -215,6 +214,69 @@ $endif$
     \end{center}
   $endif$
 \end{fichacatalografica}
+
+\begin{folhadeaprovacao}
+  $if(folha_de_aprovacao)$
+    \includepdf{$folha_de_aprovacao$}
+  $else$
+    \centering{\ABNTEXchapterfont\large A folha de aprovação será fornecida pela Secretaria de Pós-Graduação}
+  $endif$
+\end{folhadeaprovacao}
+
+$if(dedicatoria)$
+  \begin{dedicatoria}
+     \vspace*{\fill}
+     \centering
+     \noindent
+     \textit{
+        $dedicatoria$
+     }
+     \vspace*{\fill}
+  \end{dedicatoria}
+$endif$
+
+$if(agradecimentos)$
+  \begin{agradecimentos}
+  $agradecimentos$
+  \end{agradecimentos}
+$endif$
+
+$if(epigrafe)$
+  \begin{epigrafe}
+      \vspace*{\fill}
+      \begin{flushright}
+  	\textit{$epigrafe$}
+      \end{flushright}
+  \end{epigrafe}
+  $endif$
+
+\setlength{\absparsep}{18pt}
+\begin{resumo}[Resumo]
+ \begin{otherlanguage*}{brazil}
+    $resumos.pt$
+
+    \textbf{Palavras-chave}: latex. abntex. editoração de texto.
+ \end{otherlanguage*}
+\end{resumo}
+\begin{resumo}[Abstract]
+ \begin{otherlanguage*}{english}
+    $resumos.en$
+
+    \textbf{Keywords}: latex. abntex. text editoration.
+ \end{otherlanguage*}
+\end{resumo}
+
+$if(lista_figuras)$
+  \pdfbookmark[0]{\listfigurename}{lof}
+  \listoffigures*
+  \cleardoublepage
+$endif$
+
+$if(lista_tabelas)$
+  \pdfbookmark[0]{\listtablename}{lot}
+  \listoftables*
+  \cleardoublepage
+$endif$
 
 $body$
 

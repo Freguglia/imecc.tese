@@ -12,73 +12,44 @@ orientador:
 #  nome: "Nome do Coorientador"
 #  feminino: True
 ano: "2021"
-indice: True
-glossario: True
-lista_ilustracoes: true
+dedicatoria: |
+  (Opcional) Escreva aqui sua dedicatória, 
+  Exclua essa variável do cabeçalho caso não queira incluir uma
+agradecimentos: | 
+  Inserir os agradecimentos, sem esquecer dos órgãos de fomento! 
+  
+  O presente trabalho foi realizado com apoio da Coordenação de Aperfeiçoamento de Pessoal de Nível Superior - Brasil (CAPES) - Código de Financiamento 001 
+  
+  Para bolsistas FAPESP: Incluir as seguintes informações. Processo nº aaaa/nnnnn-d, Fundação de Amparo à Pesquisa do Estado de São Paulo (FAPESP) As opiniões, hipóteses e conclusões ou recomendações expressas neste material são de responsabilidade do(s) autor(es) e não necessariamente refletem a visão da FAPESP.
+epigrafe: |
+  | (Opcional)
+  | Quem sabe
+  | faz ao vivo.
+  | (Silva, Fausto)
+resumos:
+  pt: |
+    (Obrigarório) Escreva aqui o seu resumo em português. Escreva aqui o seu resumo em português. 
+    Escreva aqui o seu resumo em português. Escreva aqui o seu resumo em português. 
+    Escreva aqui o seu resumo em português. Escreva aqui o seu resumo em português. 
+  en: |
+    (Obrigatório) Versão em inglês do resumo (Abstract). Versão em inglês do resumo (Abstract).
+    Versão em inglês do resumo (Abstract). Versão em inglês do resumo (Abstract).
+    Versão em inglês do resumo (Abstract). Versão em inglês do resumo (Abstract).
+indice: true
+glossario: true
+lista_figuras: true
+lista_tabelas: true
 output: 
   pdf_document:
     template: template.tex
 #folha_de_rosto: "folha_de_rosto.pdf" # Arquivo com folha de rosto assinada e escaneada para versão final
 #ficha_catalografica: "ficha_catalografica.pdf" # Arquivo pdf fornecido pela biblioteca
+#folha_de_aprovacao: "folha_de_aprovacao.pdf"
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = FALSE)
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
 ```
-
-<!-- Folha de Aprovação (Obrigatório) -->
-<!--
-A folha de aprovação será fornecida pela secretaria de pós-graduação. Após recebê-la, escaneie a folha
-salvando em PDF no diretório do seu projeto com o nome 'folhadeaprovacao.pdf' e deixe apenas o comando
-'\includepdf{folhadeaprovacao.pdf}' dentro do ambiente abaixo
--->
-\begin{folhadeaprovacao}
-    \centering{\ABNTEXchapterfont\large A folha de aprovação será fornecida pela Secretaria de Pós-Graduação}
-%\includepdf{folhadeaprovacao.pdf}
-\end{folhadeaprovacao}
-
-<!-- Dedicatória (Opcional) -->
-\begin{dedicatoria}
-   \vspace*{\fill}
-   \centering
-   \noindent
-   \textit{
-      Este trabalho é dedicado às crianças adultas que,\\
-      quando pequenas, sonharam em se tornar cientistas.
-   }
-   \vspace*{\fill}
-\end{dedicatoria}
-
-<!-- Agradecimentos (Opcional) -->
-\begin{agradecimentos}
-Inserir os agradecimentos, sem esquecer dos órgãos de fomento!
-\end{agradecimentos}
-
-<!-- Epígrafe (Opcional) -->
-\begin{epigrafe}
-    \vspace*{\fill}
-    \begin{flushright}
-	\textit{``Não vos amoldeis às estruturas deste mundo, \\
-	    mas transformai-vos pela renovação da mente, \\
-	    a fim de distinguir qual é a vontade de Deus: \\
-	    o que é bom, o que Lhe é agradável, o que é perfeito.\\
-	    (Bíblia Sagrada, Romanos 12, 2)
-	}
-    \end{flushright}
-\end{epigrafe}
-
-<!-- Resumos (Obrigatório) -->
-\include{resumos}
-
-<!-- Lista de Ilustrações (Opcional) -->
-\pdfbookmark[0]{\listfigurename}{lof}
-\listoffigures*
-\cleardoublepage
-
-<!-- Lista de Tabelas (Opcional) -->
-\pdfbookmark[0]{\listtablename}{lot}
-\listoftables*
-\cleardoublepage
 
 <!-- Lista de Abreviaturas e Siglas (Opcional) -->
 \begin{siglas}
