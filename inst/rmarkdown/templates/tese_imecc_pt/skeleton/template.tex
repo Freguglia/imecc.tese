@@ -9,6 +9,10 @@
 	brazil
 	]{imecc-unicamp}
 
+$if(highlighting-macros)$
+$highlighting-macros$
+$endif$
+
 \input{pacotes}
 
 \titulo{$titulo$}
@@ -278,6 +282,44 @@ $if(lista_tabelas)$
   \cleardoublepage
 $endif$
 
+$if(lista_abreviaturas)$
+  \begin{siglas}
+    $for(lista_abreviaturas)$
+    \item[$lista_abreviaturas.abreviatura$] $lista_abreviaturas.significado$
+    $endfor$
+  \end{siglas}
+$endif$
+
+$if(lista_simbolos)$
+\begin{simbolos}
+  $for(lista_simbolos)$
+  \item[$lista_simbolos.simbolo$] $lista_simbolos.significado$
+  $endfor$
+\end{simbolos}
+$endif$
+
+$if(lista_algoritmos)$
+\pdfbookmark[0]{\listalgorithmcfname}{loa}
+\listofalgorithms
+\cleardoublepage
+$endif$
+
+$if(lista_codigos)$
+\pdfbookmark[0]{\lstlistlistingname}{lol}
+\begin{KeepFromToc}
+\lstlistoflistings
+\end{KeepFromToc}
+\cleardoublepage
+$endif$
+
+\pdfbookmark[0]{\contentsname}{toc}
+\tableofcontents*
+\cleardoublepage
+
+\textual
+
 $body$
 
+\phantompart
+\printindex
 \end{document}

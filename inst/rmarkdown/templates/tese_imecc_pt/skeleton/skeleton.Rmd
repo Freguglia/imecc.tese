@@ -20,7 +20,7 @@ agradecimentos: |
   
   O presente trabalho foi realizado com apoio da Coordenação de Aperfeiçoamento de Pessoal de Nível Superior - Brasil (CAPES) - Código de Financiamento 001 
   
-  Para bolsistas FAPESP: Incluir as seguintes informações. Processo nº aaaa/nnnnn-d, Fundação de Amparo à Pesquisa do Estado de São Paulo (FAPESP) As opiniões, hipóteses e conclusões ou recomendações expressas neste material são de responsabilidade do(s) autor(es) e não necessariamente refletem a visão da FAPESP.
+  Para bolsistas FAPESP: Incluir as seguintes informações. Processo nº aaaa/nnnnn-d, Fundação de Amparo à Pesquisa do Estado de São Paulo (FAPESP). As opiniões, hipóteses e conclusões ou recomendações expressas neste material são de responsabilidade do(s) autor(es) e não necessariamente refletem a visão da FAPESP.
 epigrafe: |
   | (Opcional)
   | Quem sabe
@@ -35,10 +35,18 @@ resumos:
     (Obrigatório) Versão em inglês do resumo (Abstract). Versão em inglês do resumo (Abstract).
     Versão em inglês do resumo (Abstract). Versão em inglês do resumo (Abstract).
     Versão em inglês do resumo (Abstract). Versão em inglês do resumo (Abstract).
-indice: true
-glossario: true
-lista_figuras: true
-lista_tabelas: true
+indice: True
+glossario: True
+lista_figuras: True
+lista_tabelas: True
+lista_abreviaturas: 
+  - {abreviatura: UNICAMP, significado: Universidade Estadual de Campinas}
+  - {abreviatura: IMECC, significado: Instituto de Matemática, Estatística e Computação Científica}
+lista_simbolos:
+  - {simbolo: "$\\mathds{R}$", significado: "Conjunto dos número reais"} 
+  - {simbolo: "$\\frac{\\partial f}{\\partial x}$", significado: "Derivada parcial de $f$ com respeito a $x$"}
+lista_algoritmos: True
+lista_codigos: True
 output: 
   pdf_document:
     template: template.tex
@@ -48,78 +56,149 @@ output:
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE,
+                      fig.align = "center")
 ```
-
-<!-- Lista de Abreviaturas e Siglas (Opcional) -->
-\begin{siglas}
-  \item[UNICAMP] Universidade Estadual de Campinas
-  \item[IMECC] Instituto de Matemática, Estatística e Computação Científica
-  \item[LabCSD] Laboratório de Controle e Sistemas Dinâmicos
-  \item[EPIFISMA] Laboratório de Epidemiologia e Fisiologia Matemática
-  \item[LCP] Laboratório de Computação Paralela
-  \item[LGC] Laboratório de Geofísica Computacional
-  \item[LMDC] Laboratório de Matemática Discreta e Códigos
-  \item[MiLAB] Laboratório de Tratamento Matemático de Imagens e Inteligência Computacional
-  \item[LPOO] Laboratório de Pesquisa Operacional e Otimização
-  \item[LEM] Laboratório de Ensino de Matemática
-  \item[PAPMEM] Programa de Aperfeiçoamento para Professores de Matemática do Ensino Médio
-  \item[OMU] Olimpíada de Matemática da Unicamp
-  \item[CCPG] Comissão Central de Pós-Graduação
-  \item[ABNT] Associação Brasileira de Normas Técnicas
-  \item[abnTeX] ABsurdas Normas para TeX
-\end{siglas}
-
-<!-- Lista de Símbolos (Opcional) -->
-\begin{simbolos}
-  \item[$ \mathds{M}_{m\times n}(\mathds{R}) $] Conjunto das matrizes de ordem $m\times n$ com entradas reais
-  \item[$ \mathds{R}^n_+ $] Conjunto dos vetores $x$ pertencentes a $\mathds{R}^n$ que satisfazem $x\geq0$
-  \item[$ \mathds{R}^n_{++} $] Conjunto dos vetores $x$ pertencentes a $\mathds{R}^n$ que satisfazem $x>0$
-  \item[$\|\cdot\|$] Norma-p vetorial
-  \item[$\vvvert\cdot\vvvert_p$] Norma-p matricial
-  \item[$\mathbf{I}_n$] Matriz identidade de ordem $n \times n$
-  \item[$\nabla f$] Gradiente da função $f$
-  \item[$\infty$] Infinito
-\end{simbolos}
-
-<!-- Lista de Algoritmos (Opcional) -->
-\pdfbookmark[0]{\listalgorithmcfname}{loa}
-\listofalgorithms
-\cleardoublepage
-
-<!-- Lista de Códigos (Opcional) -->
-\pdfbookmark[0]{\lstlistlistingname}{lol}
-\begin{KeepFromToc}
-\lstlistoflistings
-\end{KeepFromToc}
-\cleardoublepage
-
-<!-- Sumário (Obrigatório) -->
-\pdfbookmark[0]{\contentsname}{toc}
-\tableofcontents*
-\cleardoublepage
-
-\textual
 
 <!-- Introdução -->
+\chapter*[Introdução]{Introdução}
+\addcontentsline{toc}{chapter}{Introdução}
+
+Esse é um template para para a escrita de teses no formato padrão do IMECC - UNICAMP
+utilizando Rmarkdown. Utilize esse arquivo no formato `.Rmd` como referência para
+o desenvolvimento do seu texto.
+
+Ao longo desse arquivo são apresentados diversos exemplos de como inserir e
+formatar vários tipos de elementos, como imagens, algoritmos, tabelas, etc.
+
+Apesar de ser baseado em um arquivo `Rmarkdown`, no processo de construção
+do documento final, o arquivo é convertido para LaTeX de maneira automática,
+o que faz com que seja possível utilizar toda e qualquer funcionalidade do
+LaTeX com a mesma sintaxe sem nenhum problema. Por exemplo, utlizando o ambiente
+de equações do LaTeX no arquivo `.Rmd`
+<!-- Utilizando verbatim para apresentar os códigos no documento exemplo -->
+\begin{verbatim} 
+\begin{equation}
+  f(x) = \frac{1}{\sqrt{2\pi\sigma^2}} e^{-\frac{x^2}{2}}.
+\end{equation}
+\end{verbatim} 
+resulta na equação renderizada abaixo no documento final gerado.
+
+\begin{equation}
+  f(x) = \frac{1}{\sqrt{2\pi\sigma^2}} e^{-\frac{x^2}{2}}.
+\end{equation}
+Portanto, esse modelo em `Rmarkdown` estende as funcionalidades do LaTeX
+do modelo anterior, com a possibilidade de utilizar chunks em `R` ou `Python`
+para produzir informações no texto. Isso possibilita manter seu projeto mais
+organizado com o código junto ao texto e garante a reproducibilidade do trabalho.
 
 <!-- Desenvolvimento -->
-# Capitulo 1
+\chapter{Utilizando chunks em R para gerar tabelas e gráficos}
 
-```{r}
-plot(iris)
+A principal diferença entre escrever o trabalho em LaTeX ou `Rmarkdown`
+é a possibilidade de escrever chunks com códigos que são avaliados e os
+resultados são automaticamente incluídos no texto.
+
+Na maioria das vezes, os resultados obtidos são acresecnetados ao texto por meio
+de Tabelas ou de Figuras. Nessa seção temos exemplos desses dois tipos de
+conteúdo.
+
+\section{Figuras}
+
+Podemos gerar gráficos diretamente no documento através de chunks em R. 
+Utilize as opções no chunk para controlar parâmetros como tamanho da figura,
+legenda, etc. Caso não seja especificado, será utilizado o parâmetro `echo = FALSE` 
+(definido globalmente no primeiro chunk de configuração) que não adiciona os
+códigos ao corpo do documento, mas nesse exemplo está sendo usado `echo=TRUE`
+para ilustração.
+
+```{r exemplo_figura, echo = TRUE, fig.width=5, fig.height=2, fig.pos = "h", fig.cap="Gráfico gerado com o pacote ggplot."}
+library(ggplot2)
+ggplot(iris, aes(x = Petal.Width,
+                 y = Sepal.Width, 
+                 color = Species)) +
+  geom_point()
 ```
+
+Para colocar múltiplos gráficos na mesma figura, basta utilizar a opção
+
+```{r exemplo_figura2, echo = TRUE, fig.width=3, fig.height=2, fig.pos = "h", fig.cap="Dois gráficos na mesma figura utilizando o argumento \\tt{fig.show='hold'}.", fig.show = "hold"}
+ggplot(iris, aes(x = Petal.Width,
+                 y = Sepal.Width, 
+                 color = Species)) +
+  geom_point()
+
+ggplot(iris, aes(x = Sepal.Width,
+                 y = Petal.Width, 
+                 color = Species)) +
+  geom_point()
+
+```
+
+
+\section{Tabelas}
+
+A função `kable()` do `knitr` pode ser utilizada para gerar tabelas compatíveis com LaTeX
+a partir de objetos do tipo `data.frame` do R. Veja o exemplo abaixo:
+
+```{r exemplo_tabela, echo = TRUE}
+knitr::kable(head(iris), "latex", 
+             caption = "Primeiras linhas do dataset `iris'.",
+             booktabs = TRUE, digits = 2, position = "h!")
+```
+
+Uma alternativa para gerar tabelas mais customizáveis é o pacote `xtable`.
+Uma galeria de exemplos utilizando o `xtable` está disponível em 
+https://cran.r-project.org/web/packages/xtable/vignettes/xtableGallery.pdf
+
+Nota: É necessário acrescentar o parâmetro `results="asis"` ao chunk para que a
+tabela seja corretamente interpretada com a sintaxe de LaTeX com o `xtable`.
+
+\section{Referenciando objetos gerados com o R}
+
+Para referenciar um objeto incluído no texto a partir de um chunk em R,
+basta utilizar o `label` dado ao chunk. Utilize `\autoref{tipo:nome_do_chunk}` para
+inserir o tipo de referência automaticamente ou `\ref{tipo:nome_do_chunk}` para apenas
+o número. `tipo` representa o tipo de objeto resultante daquele chunk como
+`fig` para figuras e `tab` para tabelas.
+
+\subsection{Exemplos}
+
+  * `\autoref{fig:exemplo_figura}}` resulta em \autoref{fig:exemplo_figura}.
+  * `ref{fig:exemplo_figura}` resulta em \ref{fig:exemplo_figura}.
+  * `\autoref{tab:exemplo_tabela}` resulta em \autoref{tab:exemplo_tabela}.
+  * `\ref{tab:exemplo_tabela}` resulta em \ref{tab:exemplo_tabela}.
+
+\chapter{Comandos gerais em LaTeX}
+
+Para informações sobre como utilizar a classe `imecc-unicamp.cls`, recomendo
+ver o template em LaTeX desenvolvido pelo Fábio Rodrigues Silva, no link
+https://www.overleaf.com/latex/templates/modelo-tese-imecc-unicamp/hrryjftrmzhz
+
+Uma vez que toda a sintaxe de LaTeX é interpretável no formato `Rmarkdown`,
+esse modelo é uma versão estendida do modelo em LaTeX com a possibilidade de 
+acrescentar chunks em R.
+
+\section{Citações}
+
+O modelo utiliza o `abntex2cite` para processar as citações. Você pode utilizar:
+
+  * `\citeonline{breiman2001statistical}` para referências no meio do texto, resultando em \citeonline{breiman2001statistical}.
+  * `\cite{breiman2001statistical}` para referências entre parênteses \cite{breiman2001statistical}.
 
 <!-- Considerações Finais -->
 \phantompart
-\include{considfinais}
+\chapter{Considerações Finais}
+
+Para tirar qualquer dúvida sobre esse documento, você pode visitar o repositório
+https://github.com/Freguglia/imecc.tese e abrir uma Issue com a sua pergunta.
 
 \postextual
 
 <!-- Referências -->
-\bibliography{abntex2-modelo-references}
+\bibliography{bibliografia.bib}
 
-<!-- Glossário -->
+<!-- Glossário (não alterar) -->
 \phantompart
 \cleardoublepage
 \phantomsection
@@ -130,15 +209,19 @@ plot(iris)
 <!-- Apêndices -->
 \begin{apendicesenv}
 \partapendices
-\include{apendices}
+
+\chapter{Primeiro apendice}
+
+\lipsum[50]
+
 \end{apendicesenv}
 
 <!-- Anexos -->
 \begin{anexosenv}
-% Imprime uma página indicando o início dos anexos
 \partanexos
-\include{anexos}
-\end{anexosenv}
 
-\phantompart
-\printindex
+\chapter{Nome do anexo}
+
+\lipsum[50]
+
+\end{anexosenv}
