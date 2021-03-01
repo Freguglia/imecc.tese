@@ -13,6 +13,38 @@ $if(highlighting-macros)$
 $highlighting-macros$
 $endif$
 
+% Essenciais
+\usepackage{lmodern}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lastpage}
+\usepackage{indentfirst}
+\usepackage{color,xcolor}
+\usepackage{graphicx}
+\usepackage{microtype}
+
+% Úteis
+\usepackage[onelanguage]{algorithm2e}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{hyperref}
+\usepackage{cleveref}
+\usepackage{dsfont}
+\usepackage{listings}
+\usepackage{pdfpages}
+\usepackage{verbatim}
+\usepackage[subentrycounter,seeautonumberlist,nonumberlist=true]{glossaries}
+\usepackage[alf,
+	    abnt-repeated-author-omit=yes,
+	    abnt-etal-list=0]{abntex2cite}
+\usepackage{lipsum}
+
+$if(pacotes_adicionais)$
+$for(pacotes_adicionais)$
+  \usepackage{$pacotes_adicionais$}
+$endfor$
+$endif$
+
 \titulo{$titulo.pt$}
 \curso{$curso.pt$}
 
@@ -265,14 +297,14 @@ $if(epigrafe)$
  \begin{otherlanguage*}{brazil}
     $resumos.pt$
 
-    \textbf{Palavras-chave}: latex. abntex. editoração de texto.
+    \textbf{Palavras-chave}: $for(palavras_chave.pt)$ $palavras_chave.pt$. $endfor$
  \end{otherlanguage*}
 \end{resumo}
 \begin{resumo}[Abstract]
  \begin{otherlanguage*}{english}
     $resumos.en$
 
-    \textbf{Keywords}: latex. abntex. text editoration.
+    \textbf{Keywords}: $for(palavras_chave.en)$ $palavras_chave.en$. $endfor$
  \end{otherlanguage*}
 \end{resumo}
 

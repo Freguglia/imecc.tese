@@ -35,6 +35,9 @@ resumos:
     (Obrigatório) Versão em inglês do resumo (Abstract). Versão em inglês do resumo (Abstract).
     Versão em inglês do resumo (Abstract). Versão em inglês do resumo (Abstract).
     Versão em inglês do resumo (Abstract). Versão em inglês do resumo (Abstract).
+palavras_chave:
+    pt: ["LaTeX", "Rmarkdown", "Modelo de Tese"]
+    en: ["LaTeX", "Rmarkdown", "Thesis Template"]
 indice: True
 glossario: True
 lista_figuras: True
@@ -47,9 +50,7 @@ lista_simbolos:
   - {simbolo: "$\\frac{\\partial f}{\\partial x}$", significado: "Derivada parcial de $f$ com respeito a $x$"}
 lista_algoritmos: True
 lista_codigos: True
-pacotes_adicionais:
-  - "amsfonts"
-  - "amssymb"
+pacotes_adicionais: ["amsfonts", "amssymb"]
 output: 
   pdf_document:
     template: template.tex
