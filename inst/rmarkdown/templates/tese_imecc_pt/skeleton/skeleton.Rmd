@@ -47,6 +47,9 @@ lista_simbolos:
   - {simbolo: "$\\frac{\\partial f}{\\partial x}$", significado: "Derivada parcial de $f$ com respeito a $x$"}
 lista_algoritmos: True
 lista_codigos: True
+pacotes_adicionais:
+  - "amsfonts"
+  - "amssymb"
 output: 
   pdf_document:
     template: template.tex

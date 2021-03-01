@@ -13,7 +13,37 @@ $if(highlighting-macros)$
 $highlighting-macros$
 $endif$
 
-\input{pacotes}
+% Essenciais
+\usepackage{lmodern}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lastpage}
+\usepackage{indentfirst}
+\usepackage{color,xcolor}
+\usepackage{graphicx}
+\usepackage{microtype}
+
+% Úteis
+\usepackage[onelanguage]{algorithm2e}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{hyperref}
+\usepackage{cleveref}
+\usepackage{dsfont}
+\usepackage{listings}
+\usepackage{pdfpages}
+\usepackage{verbatim}
+\usepackage[subentrycounter,seeautonumberlist,nonumberlist=true]{glossaries}
+\usepackage[alf,
+	    abnt-repeated-author-omit=yes,
+	    abnt-etal-list=0]{abntex2cite}
+\usepackage{lipsum}
+
+$if(pacotes_adicionais)$
+$for(pacotes_adicionais)$
+  \usepackage{$pacotes_adicionais$}
+$endfor$
+$endif$
 
 \titulo{$titulo$}
 \curso{$curso$}
