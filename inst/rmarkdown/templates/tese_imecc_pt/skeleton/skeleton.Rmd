@@ -1,7 +1,7 @@
 ---
 titulo: "Título do seu Trabalho Acadêmico"
 curso: "Estatística" # / "Matemática" / "Matemática Aplicada"
-nível_doutorado: False # False para Mestrado, True para Doutorado
+nivel_doutorado: True # False para Mestrado, True para Doutorado
 autor: 
   nome: "Nome do Aluno"
   feminino: True

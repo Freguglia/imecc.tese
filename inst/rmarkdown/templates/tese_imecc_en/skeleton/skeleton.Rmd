@@ -5,7 +5,7 @@ titulo:
 curso: 
   en: "Statistics" # / "Mathematics" / "Applied Mathematics"
   pt: "Estatística" # / "Matemática" / "Matemática Aplicada"
-nível_doutorado: False # False para Mestrado, True para Doutorado
+nivel_doutorado: False # False para Mestrado, True para Doutorado
 autor: 
   nome: "Nome do Aluno"
   feminino: True
