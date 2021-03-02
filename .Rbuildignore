@@ -2,3 +2,9 @@
 ^\.Rproj\.user$
 ^LICENSE\.md$
 ^README\.Rmd$
+*.lol
+*.loa
+*.ist
+*.log
+*.glo
+*.pdf
