@@ -202,7 +202,8 @@ https://github.com/Freguglia/imecc.tese e abrir uma Issue com a sua pergunta.
 <!-- Referências -->
 \bibliography{bibliografia.bib}
 
-<!-- Glossário (não alterar) -->
+<!-- Glossário (OPCIONAL)
+deixar esse trecho apenas com a opção glossario: True-->
 \phantompart
 \cleardoublepage
 \phantomsection
